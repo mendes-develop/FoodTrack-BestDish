@@ -28,8 +28,8 @@ export default class MapDiv extends React.Component {
 const MapContainer = styled.div`
 .map-container {
   border: 3px solid green;
-  width: 50vw;
-  height: 50vw;
+  width: 100vw;
+  height: 100vw;
   margin: auto;
   float: left
 }

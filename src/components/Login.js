@@ -13,9 +13,10 @@ export default function Login() {
     
 
     const handleData = (data) => {
-        
-        if (data.token){ localStorage.token = data.token} //redirect to main page
-        else { setErrors(data.errors) }
+        if (data.token){ 
+            localStorage.token = data.token
+            addToken(token)
+        } else { setErrors(data.errors) }
     }
 
 

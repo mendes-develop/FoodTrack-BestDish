@@ -1,7 +1,7 @@
 import { RestaurantInfoWindow } from './RestaurantInfoWindow';
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
-import { data } from '../data'
+import { data } from '../db'
 
 function Map(){
 
@@ -19,10 +19,10 @@ function Map(){
      defaultCenter={{ lat: 45.421532, lng: -75.697189 }}
     >
       { restaurants.map(restaurant => (< Marker
-        key={restaurant.properties.PARK_ID}
+        key={restaurant.restaurant_id}
         position={{
-          lat: restaurant.geometry.coordinates[1],
-          lng: restaurant.geometry.coordinates[0]
+          lat: restaurant.address.latitude,
+          lng: restaurant.address.longitude
         }}
         onClick={() => setSelectedRestaurant(restaurant) }
         />
@@ -31,12 +31,12 @@ function Map(){
       { selectedRestaurant && (
         < InfoWindow
         position={{
-          lat: selectedRestaurant.geometry.coordinates[1],
-          lng: selectedRestaurant.geometry.coordinates[0]
+          lat: selectedRestaurant.address.latitude,
+          lng: selectedRestaurant.address.longitude
         }}
         onCloseClick={() => setSelectedRestaurant(null) }
         >
-          <RestaurantInfoWindow name={selectedRestaurant.name} address={selectedRestaurant.address} url={selectedRestaurant.url}     />
+          <RestaurantInfoWindow name={selectedRestaurant.name} address={selectedRestaurant.address.street_address} url={selectedRestaurant.media_image.base_url + selectedRestaurant.media_image.public_id}     />
         </InfoWindow>
       )}
 

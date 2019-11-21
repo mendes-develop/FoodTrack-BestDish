@@ -14,6 +14,10 @@ import MapPage from './components/MapPage'
 export default function App() {
 
   const [token, setToken] = useState(null)
+
+  const addToken = (token) => {
+    setToken(token)
+  }
   
     return (
       <main>
