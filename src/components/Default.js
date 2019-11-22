@@ -1,19 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-class Default extends React.Component {
+export default function Default(){
 
-  render(){
     return (
       <Div404>
         <h2>404!</h2>
         <h3>Page not Found</h3>
       </Div404>
     )
-  }
 }
-
-export default Default
 
 const Div404 = styled.div`
 margin: auto;

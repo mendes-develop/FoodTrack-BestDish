@@ -2,7 +2,6 @@
 let url = 'http://localhost:3000/'
 
 export const loginUser = (username, password) => {
-    
     return (
         fetch(url + `login`, {
             method: "POST",

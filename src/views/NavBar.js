@@ -1,19 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-//
 import logo from '../cutlery.svg'
-import { ButtonContainer } from './Button'
+import { ButtonContainer } from '../components/Button'
 
-export default class Navbar extends React.Component {
+export default function Navbar() {
 
-  render(){
     return (
-      <NavWraper className='navbar navbar-expand-sm  bg-primary navbar-dark px-sm-5'>
+      <NavWrapper className='navbar navbar-expand-sm  bg-primary navbar-dark px-sm-5'>
       <Link to='/'>
         <img src={logo} alt='home'/>
       </Link>
-      <ul className='navbar-nav align-tems-center'>
+      <ul className='navbar-nav align-items-center'>
         <li className='nav-item ml-5'>
           <Link to='/' className='nav-link'>
             Search
@@ -28,13 +26,13 @@ export default class Navbar extends React.Component {
            Favorites
         </ButtonContainer>
       </Link>
-      </NavWraper>
+      </NavWrapper>
     )
-  }
+  
 }
 
 
-const NavWraper = styled.nav`
+const NavWrapper = styled.nav`
   background: var(--mainBlue) !important;
   .nav-link {
     color: var(--mainWhite) !important;

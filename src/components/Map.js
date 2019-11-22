@@ -1,40 +1,43 @@
 import { RestaurantInfoWindow } from './RestaurantInfoWindow';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import { data } from '../db'
+import {useSelector, useDispatch} from 'react-redux'
 
 function Map(){
+  const restaurants =  useSelector(state => state.restaurants)
+  const selectedRestaurant = useSelector(state => state.selectedRestaurant)
 
-  const [restaurants, setRestaurants] = useState([])
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    setRestaurants(data)
-  }, [])
+    //fetching at some point
+    dispatch({type: "SET_RESTAURANTS", payload: data})
+  }, [dispatch])
 
 
  return (
    <GoogleMap
-     defaultZoom={10}
-     defaultCenter={{ lat: 45.421532, lng: -75.697189 }}
+     defaultZoom={13}
+     defaultCenter={{ lat: 40.712776, lng: -74.005974 }}
     >
       { restaurants.map(restaurant => (< Marker
         key={restaurant.restaurant_id}
         position={{
-          lat: restaurant.address.latitude,
-          lng: restaurant.address.longitude
+          lat: parseFloat(restaurant.address.latitude),
+          lng: parseFloat(restaurant.address.longitude)
         }}
-        onClick={() => setSelectedRestaurant(restaurant) }
+        onClick={() => dispatch({type: "SET_SELECTED_RESTAURANT", payload: restaurant}) }
         />
       ))}
 
       { selectedRestaurant && (
         < InfoWindow
         position={{
-          lat: selectedRestaurant.address.latitude,
-          lng: selectedRestaurant.address.longitude
+          lat: parseFloat(selectedRestaurant.address.latitude),
+          lng: parseFloat(selectedRestaurant.address.longitude)
         }}
-        onCloseClick={() => setSelectedRestaurant(null) }
+        onCloseClick={() => dispatch({type: "SET_SELECTED_RESTAURANT", payload: null})}
         >
           <RestaurantInfoWindow name={selectedRestaurant.name} address={selectedRestaurant.address.street_address} url={selectedRestaurant.media_image.base_url + selectedRestaurant.media_image.public_id}     />
         </InfoWindow>
@@ -46,7 +49,23 @@ function Map(){
 
 export const WrappedMap = withScriptjs(withGoogleMap(Map));
 
+// function mapStateToProps(state){
+//   return {
+//     restaurants: state.restaurants,
+//     selectedRestaurant: state.selectedRestaurant
+//   }
+// }
 
+// function mapDispatchToProps(dispatch){
+//   return {
+//     setRestaurants: (restaurants) => {
+//       dispatch({type: "SET_RESTAURANTS", payload: restaurants})
+//     },
+//     setSelectedRestaurant: (restaurant) => {
+//       dispatch({type: "SET_SELECTED_RESTAURANT", payload: restaurant})
+//     }
+//   }
+// }
 
 // Create default canvas using GoogleMap component and stablish default values
 // Create WrappedMap variable and assign it to a function imported from 'react-google-maps'

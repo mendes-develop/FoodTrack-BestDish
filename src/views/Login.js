@@ -1,8 +1,14 @@
 import React, {useState} from 'react'
 import { loginUser } from '../fetch/Fetch'
 import { createUser } from '../fetch/Fetch'
+import { getUser } from '../fetch/Fetch'
+import { useDispatch } from 'react-redux'
+// import {connect} from 'react-redux'
 
-export default function Login() {
+function Login() {
+
+    // const currentUser = useSelector(state => state.currentUser)
+    const dispatch = useDispatch()
 
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
@@ -12,24 +18,28 @@ export default function Login() {
     const [errors, setErrors] = useState([])
     
 
-    const handleData = (data) => {
+    const handleData = async (data) => {
         if (data.token){ 
+
             localStorage.token = data.token
-            addToken(token)
+            let currentUser = await getUser()
+            dispatch({type: "SET_USER", payload: currentUser})
+            
         } else { setErrors(data.errors) }
     }
 
-
     const  handleSubmit = async (e) => {
+        
         e.preventDefault()
         if (login){
             let data = await loginUser(username, password)
             handleData(data)
- 
+            
         } else if (!login) {
             let data = await createUser(username, email, password, password_confirmation)
             handleData(data)
         } 
+        
     }
 
     const changeForm = () => {
@@ -111,3 +121,19 @@ export default function Login() {
         </div>
     )
 }
+  export default (Login)
+
+
+// function mapStateToProps(state){
+//     return {
+//       currentUser: state.currentUser
+//     }
+//   }
+  
+//   function mapDispatchToProps(dispatch){
+//     return {
+//       setUser: (user) => {
+//         dispatch({type: "SET_USER", payload: user})
+//       }
+//     }
+//   }
