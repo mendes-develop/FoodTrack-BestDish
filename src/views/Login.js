@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { loginUser } from '../fetch/Fetch'
 import { createUser } from '../fetch/Fetch'
-import { getUser } from '../fetch/Fetch'
+// import { getUser } from '../fetch/Fetch'
 import { useDispatch } from 'react-redux'
 // import {connect} from 'react-redux'
 
@@ -20,16 +20,15 @@ function Login() {
 
     const handleData = async (data) => {
         if (data.token){ 
-
+            debugger
             localStorage.token = data.token
-            let currentUser = await getUser()
-            dispatch({type: "SET_USER", payload: currentUser})
+            // let currentUser = await getUser()
+            dispatch({type: "SET_USER", payload: data.current_user})
             
         } else { setErrors(data.errors) }
     }
 
     const  handleSubmit = async (e) => {
-        
         e.preventDefault()
         if (login){
             let data = await loginUser(username, password)
@@ -39,7 +38,6 @@ function Login() {
             let data = await createUser(username, email, password, password_confirmation)
             handleData(data)
         } 
-        
     }
 
     const changeForm = () => {

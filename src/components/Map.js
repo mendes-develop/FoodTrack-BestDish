@@ -5,6 +5,7 @@ import { data } from '../db'
 import {useSelector, useDispatch} from 'react-redux'
 
 function Map(){
+  
   const restaurants =  useSelector(state => state.restaurants)
   const selectedRestaurant = useSelector(state => state.selectedRestaurant)
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-export default function RestaurantsForm(){
+export default function RestaurantPage(){
 
   const [location, setLocation] = useState('')
   const [category, setCategory] = useState('')
@@ -50,10 +50,6 @@ const FormDiv = styled.div`
   padding: 10px;
   margin-top: 10px
   text-align: center;
-}
-
-.col {
-
 }
 
 `

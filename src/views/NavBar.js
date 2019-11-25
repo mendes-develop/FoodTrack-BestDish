@@ -26,6 +26,7 @@ export default function Navbar() {
            Favorites
         </ButtonContainer>
       </Link>
+      <button onClick={() => localStorage.clear()}>Logout</button>
       </NavWrapper>
     )
   
