@@ -1,10 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../cutlery.svg'
 import { ButtonContainer } from '../components/Button'
+import {useSelector, useDispatch} from 'react-redux'
 
-export default function Navbar() {
+export default function Navbar(props) {
+
+  const currentUser = useSelector(state => state.currentUser)
+  const dispatch = useDispatch()
+
+  const handleClick = () => {
+    localStorage.clear()
+    dispatch({type: "SET_USER", payload: null})
+    props.history.push('/login')
+
+  }
 
     return (
       <NavWrapper className='navbar navbar-expand-sm  bg-primary navbar-dark px-sm-5'>
@@ -18,15 +29,12 @@ export default function Navbar() {
           </Link>
         </li>
       </ul>
-      <Link to='/cart' className='ml-auto'>
+      {currentUser ? <button onClick={() => handleClick()} className='mr-2'>Logout</button> : <button onClick={() => handleClick()} className='mr-2'>Login/Signup</button>}
+      <Link to='/favorites' className='ml-auto'>
         <ButtonContainer>
-          <span className='mr-2'>
-            <i className='fas fa-cart-plus' />
-          </span>
            Favorites
         </ButtonContainer>
       </Link>
-      <button onClick={() => localStorage.clear()}>Logout</button>
       </NavWrapper>
     )
   

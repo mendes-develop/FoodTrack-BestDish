@@ -50,3 +50,44 @@ export const getUser = () => {
     )
 
 }
+
+export const getRestaurants = (location = "") => {
+    return (
+        fetch(url + `restaurants?query=${location}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => data )
+    )
+}
+
+export const addToFavorites = (restaurant_id) => {
+    return (
+        fetch(url + `favorites`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.token}`
+            },
+            body: JSON.stringify({restaurant_id})
+        })
+        .then(resp => resp.json())
+        .then(data => data )
+    )
+}
+
+export const getFavorites = () => {
+    return (
+        fetch(url + `favorites`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.token}`
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => data )
+    )
+}

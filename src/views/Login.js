@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
-import { loginUser } from '../fetch/Fetch'
-import { createUser } from '../fetch/Fetch'
+import React, {useState, useEffect} from 'react'
+import { loginUser, createUser } from '../fetch/Fetch'
 // import { getUser } from '../fetch/Fetch'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 // import {connect} from 'react-redux'
 
-function Login() {
+function Login(props) {
 
     // const currentUser = useSelector(state => state.currentUser)
     const dispatch = useDispatch()
+    const currentUser = useSelector(state => state.currentUser)
 
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
@@ -16,14 +16,20 @@ function Login() {
     const [password_confirmation, setPasswordConfirmation] = useState('')
     const [login, setLogin] = useState(true)
     const [errors, setErrors] = useState([])
+
+    useEffect(() => {
+        if (currentUser){
+            props.history.push('/')
+        }
+    })
     
 
     const handleData = async (data) => {
         if (data.token){ 
-            debugger
             localStorage.token = data.token
             // let currentUser = await getUser()
             dispatch({type: "SET_USER", payload: data.current_user})
+            props.history.push('/')
             
         } else { setErrors(data.errors) }
     }

@@ -1,7 +1,6 @@
 import { RestaurantInfoWindow } from './RestaurantInfoWindow';
 import React, { useEffect } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
-import { data } from '../db'
 import {useSelector, useDispatch} from 'react-redux'
 
 function Map(){
@@ -11,22 +10,16 @@ function Map(){
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    //fetching at some point
-    dispatch({type: "SET_RESTAURANTS", payload: data})
-  }, [dispatch])
-
-
  return (
    <GoogleMap
      defaultZoom={13}
      defaultCenter={{ lat: 40.712776, lng: -74.005974 }}
     >
       { restaurants.map(restaurant => (< Marker
-        key={restaurant.restaurant_id}
+        key={restaurant.id}
         position={{
-          lat: parseFloat(restaurant.address.latitude),
-          lng: parseFloat(restaurant.address.longitude)
+          lat: parseFloat(restaurant.latitude),
+          lng: parseFloat(restaurant.longitude)
         }}
         onClick={() => dispatch({type: "SET_SELECTED_RESTAURANT", payload: restaurant}) }
         />
@@ -35,12 +28,12 @@ function Map(){
       { selectedRestaurant && (
         < InfoWindow
         position={{
-          lat: parseFloat(selectedRestaurant.address.latitude),
-          lng: parseFloat(selectedRestaurant.address.longitude)
+          lat: parseFloat(selectedRestaurant.latitude),
+          lng: parseFloat(selectedRestaurant.longitude)
         }}
         onCloseClick={() => dispatch({type: "SET_SELECTED_RESTAURANT", payload: null})}
         >
-          <RestaurantInfoWindow name={selectedRestaurant.name} address={selectedRestaurant.address.street_address} url={selectedRestaurant.media_image.base_url + selectedRestaurant.media_image.public_id}     />
+          <RestaurantInfoWindow/>
         </InfoWindow>
       )}
 

@@ -7,9 +7,11 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from './reducers/reducer'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const store = createStore(
-  reducer
+  reducer,
+  composeWithDevTools()
 ) 
 
 ReactDOM.render(

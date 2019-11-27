@@ -1,16 +1,26 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import SideBar from '../components/SideBar'
-//
 import { WrappedMap } from '../components/Map'
+import {useDispatch} from 'react-redux'
+import {getRestaurants} from '../fetch/Fetch'
 
 
 export default function MapDiv(){
 
-  // .map-container {
-   // margin: auto;
-  // float: left
-// }
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+
+    async function loadRestaurants(){
+      const data = await getRestaurants()
+      dispatch({type: "SET_RESTAURANTS", payload: data})
+    }
+    
+    loadRestaurants()
+    
+  }, [dispatch])
+
     return (
         <MapContainer className='map-container'>
           <SideBar/>

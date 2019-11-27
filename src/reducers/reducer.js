@@ -28,6 +28,12 @@ export default function reducer(state = initialState, action){
                 ...state,
                 favoriteRestaurants: [...state.favoriteRestaurants, action.payload]
             }
+        case "SET_FAVORITES" :
+            console.log(action.payload)
+            return {
+                ...state,
+                favoriteRestaurants: action.payload
+            }
         default :return state
     }
     

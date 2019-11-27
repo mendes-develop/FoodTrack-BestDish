@@ -14,7 +14,7 @@ export default function SideBar(){
         <h2>List of restaurants</h2>
         <ul>
           {restaurants.map(restaurant => {
-            return (<li>{restaurant.name}</li>)
+            return (<li key={restaurant.id}>{restaurant.name}</li>)
           })}
         </ul>
       </div>
@@ -29,7 +29,7 @@ const ListDiv = styled.div`
   z-index: 1; /* Sit on top */
   padding: 10px; /* Location of the box */
   left: 2%;
-  top: 30%;
+  top: 70%;
   /* width: 20%; Full width */
   /* height: 50%; Full height */
   overflow: auto; /* Enable scroll if needed */ 

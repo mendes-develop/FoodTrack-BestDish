@@ -10340,53 +10340,6 @@
       "id": 220
     },
     {
-      "restaurant_id": "293549",
-      "name": "Cold Stone Creamery",
-      "logo": "https://res.cloudinary.com/grubhub/image/upload/v1478735056/kdffrsjpn9ecppkz94to.png",
-      "menu_items": [
-        {
-          "id": "12785887",
-          "name": "Peanut Butter Cup Perfection",
-          "description": "Chocolate ice cream, peanut butter, Reese's peanut butter cups and fudge.",
-          "minimum_price_variation": 7.49
-        },
-        {
-          "id": "12785891",
-          "name": "Birthday Cake Remix",
-          "description": "Cake batter ice cream, rainbow sprinkles, brownie and fudge.",
-          "minimum_price_variation": 7.49
-        },
-        {
-          "id": "12785909",
-          "name": "Create Your Own",
-          "description": "Ice cream plus one mix-in.",
-          "minimum_price_variation": 6.99
-        }
-      ],
-      "address": {
-        "address_locality": "Hoboken",
-        "address_region": "NJ",
-        "postal_code": "07030",
-        "street_address": "116 Washington St",
-        "latitude": "40.738112",
-        "longitude": "-74.03093"
-      },
-      "price_rating": 1,
-      "media_image": {
-        "base_url": "https://res.cloudinary.com/grubhub/image/upload/",
-        "public_id": "ivkwhsgscuwpifbvxt15",
-        "format": "jpg"
-      },
-      "additional_media_images": {
-        "LOGO_HOME_PAGE": {
-          "base_url": "https://res.cloudinary.com/grubhub/image/upload/",
-          "public_id": "kdffrsjpn9ecppkz94to",
-          "format": "png"
-        }
-      },
-      "id": 221
-    },
-    {
       "restaurant_id": "1264694",
       "name": "Loquito",
       "logo": "https://media-cdn.grubhub.com/image/upload/v1565210457/txj3bmor8qaa5vup5mo0.png",

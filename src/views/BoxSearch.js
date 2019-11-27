@@ -17,15 +17,15 @@ export default function BoxSearch(props){
             <div><img src="" alt="Some Food picture"/></div>
             <div className="search">
                 <select onChange={(e) => setCity(e.target.value)} className="searchTerm" name="location" id="">
-                    <option value="" disabled selected>Select a location</option>
+                    <option value="" defaultValue>Select a location</option>
                     <option value="manhattan">Manhattan</option>
                     <option value="queens">Queens</option>
                     <option value="brooklyn">Brooklyn</option>
                     <option value="bronx">Bronx</option>
                     <option value="statenisland">Staten Island</option>
                 </select>
-                <button onClick={handleSubmit} type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
+                <button onClick={handleSubmit} type="submit" className="searchButton">
+                    <i className="fa fa-search"></i>
                 </button>
             </div> 
         </BoxSearchDiv>
