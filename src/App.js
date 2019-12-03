@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {Switch, Route} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import styled from 'styled-components'
@@ -10,7 +11,9 @@ import MapDiv from './views/MapDiv'
 import BoxSearch from './views/BoxSearch'
 import Default from './views/Default'
 import FavoritesPage from './views/FavoritesPage'
-import {useSelector, useDispatch} from 'react-redux'
+import RestaurantShowPage from './views/RestaurantShowPage'
+// import ModalPage from './views/ModalPage'
+
 
 function App() {
 
@@ -29,15 +32,15 @@ function App() {
       handleData(user)
     }
 
-    const handleFavorites = async () =>{
-      let data = await getFavorites()
-      console.log(data)
-      dispatch({type: "SET_FAVORITES", payload: data})
-    }
+    // const handleFavorites = async () =>{
+    //   let data = await getFavorites()
+    //   console.log(data)
+    //   dispatch({type: "SET_FAVORITES", payload: data})
+    // }
   
     if (localStorage.token) {
       handleToken()
-      handleFavorites()
+      // handleFavorites()
     }
 
   },[dispatch])
@@ -51,7 +54,7 @@ function App() {
           <Route exact path={'/restaurants'} component={MapDiv}/>
           <Route exact path={'/login'} component={Login}/>
           <Route exact path={'/favorites'} component={FavoritesPage}/>
-          <Route exact path={'/restaurants/:id'} component={Login}/>
+          <Route exact path={'/restaurants/:id'} component={RestaurantShowPage}/>
           <Route default component={Default}/>
         </Switch>
       </>

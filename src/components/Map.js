@@ -2,6 +2,7 @@ import { RestaurantInfoWindow } from './RestaurantInfoWindow';
 import React, { useEffect } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import {useSelector, useDispatch} from 'react-redux'
+import {Route} from 'react-router-dom'
 
 function Map(){
   
@@ -33,7 +34,7 @@ function Map(){
         }}
         onCloseClick={() => dispatch({type: "SET_SELECTED_RESTAURANT", payload: null})}
         >
-          <RestaurantInfoWindow/>
+        <Route component={RestaurantInfoWindow}/>
         </InfoWindow>
       )}
 

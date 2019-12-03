@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {useDispatch, useSelector} from 'react-redux'
 import {addToFavorites} from '../fetch/Fetch'
 
-export function RestaurantInfoWindow() {
+export function RestaurantInfoWindow(props) {
 
   const dispatch = useDispatch()
   const selectedRestaurant = useSelector(state => state.selectedRestaurant)
@@ -19,13 +19,16 @@ export function RestaurantInfoWindow() {
     }
     
   }
-  const handleClick = async () =>{
+  const handleClickFavorites = async () =>{
     console.log("adding to favorites")
     let data = await addToFavorites(selectedRestaurant.id)
     handleData(data)
   }
 
-  
+  const handleClickShowPage = () => {
+    props.history.push(`restaurants/${selectedRestaurant.id}`)
+   
+  }
 
  
 
@@ -35,8 +38,8 @@ export function RestaurantInfoWindow() {
       <h3>{name}</h3>
       <img src={media_image} alt='restaurant' height="180" width="200"/>
       <p>{street_address}</p>
-      <button>Best Dishes</button>
-      <button onClick={handleClick}>Add to Favorites</button>
+      <button onClick={handleClickShowPage}>Best Dishes</button>
+      <button onClick={handleClickFavorites}>Add to Favorites</button>
     </RestaurantDIV>
   )       
 }

@@ -14,7 +14,7 @@ export default function BoxSearch(props){
 
     return (
         <BoxSearchDiv>
-            <div><img src="" alt="Some Food picture"/></div>
+            <div><img src="" alt="Some Food"/></div>
             <div className="search">
                 <select onChange={(e) => setCity(e.target.value)} className="searchTerm" name="location" id="">
                     <option value="" defaultValue>Select a location</option>

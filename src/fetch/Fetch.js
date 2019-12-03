@@ -56,6 +56,7 @@ export const getRestaurants = (location = "") => {
         fetch(url + `restaurants?query=${location}`, {
             headers: {
                 'Content-Type': 'application/json'
+                // 'Authorization': `Bearer ${localStorage.token}`
             }
         })
         .then(resp => resp.json())
