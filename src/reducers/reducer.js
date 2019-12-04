@@ -22,7 +22,10 @@ let initialState = {
             price:4}
         ]
     },
-    selectedDish: null,
+    selectedDish: {id:132,
+        name:"Chicken Quesadilla",
+        description:"An extra large flour tortilla filled with melty three-cheese blend, fire grilled chicken, creamy jalapeño sauce folded and grilled to perfection.",
+        price:4},
     favoriteRestaurants: [],
     modal: true
 

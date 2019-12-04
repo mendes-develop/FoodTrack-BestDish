@@ -92,3 +92,22 @@ export const getFavorites = () => {
         .then(data => data )
     )
 }
+
+export const submitVote = (stars, comment, dish_id) => {
+    return (
+        fetch(url + `votes`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.token}`
+            },
+            body: JSON.stringify({
+                stars: stars,
+                comment: comment,
+                dish: dish_id
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => data )
+    )
+}
