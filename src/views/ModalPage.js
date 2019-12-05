@@ -18,11 +18,11 @@ export default function ModalPage({show, handleClose}) {
 
   const handleData = (data) => {
     if (data.errors){
-      debugger
+      
       console.log(data.errors)
       alert.show("Something happened with the data that was sent. Please, try it again")
     } else {
-      debugger
+      
       alert.success('thank you for submitting your vote')
       dispatch({type: "SWITCH_MODAL"})
     }
