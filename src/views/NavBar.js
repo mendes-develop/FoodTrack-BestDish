@@ -2,9 +2,8 @@ import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../cutlery.svg'
-import { ButtonContainer } from '../components/Button'
 import {useSelector, useDispatch} from 'react-redux'
-import { Navbar, Nav, Button, Form, FormControl } from 'react-bootstrap';
+import { Navbar, Nav, Button, Form, FormControl, Dropdown } from 'react-bootstrap';
 
 
 export default function NavbarComponent(props) {
@@ -26,10 +25,20 @@ export default function NavbarComponent(props) {
       </Nav>
       <Form inline>
       <Navbar.Brand>{currentUser ? `Hello, ${currentUser.username}!` : null}</Navbar.Brand>
-      <Button variant="outline-light" onClick={handleClick} >{currentUser ? 'Logout' : 'Login'}</Button>
       </Form>
+      <Dropdown style={{"marginRight" : "70px"}}>
+        <Dropdown.Toggle variant="outline-light" id="dropdown-basic">
+          More
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+        <Dropdown.Item href="/favorites">Favorites</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleClick()}>{currentUser ? 'Logout' : 'Login'}</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     </Navbar>
   )
+  // <Button variant="outline-light" onClick={handleClick} >{currentUser ? 'Logout' : 'Login'}</Button>
 
     // return (
     //   <NavWrapper className='navbar navbar-expand-sm  bg-primary navbar-dark px-sm-5'>

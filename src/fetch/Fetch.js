@@ -79,6 +79,20 @@ export const addToFavorites = (restaurant_id) => {
     )
 }
 
+export const deleteFromFavorites = (restaurant_id) => {
+    return (
+        fetch(url + `favorites/${restaurant_id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.token}`
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => data )
+    )
+}
+
 export const getFavorites = () => {
     return (
         fetch(url + `favorites`, {

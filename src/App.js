@@ -24,8 +24,14 @@ function App() {
     const handleData = (data) => {
       if (data){
         dispatch({type: "SET_USER", payload: data.current_user})
+        handleFavorites()
       }
     }
+
+    const handleFavorites = async () =>{
+      let data = await getFavorites()
+      dispatch({type: "SET_FAVORITES", payload: data})
+  }
 
     const handleToken = async () => {
       let user = await getUser()

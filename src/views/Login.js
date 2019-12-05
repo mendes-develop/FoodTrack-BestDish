@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import { loginUser, createUser } from '../fetch/Fetch'
 import { Button, Form, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'
-// import {connect} from 'react-redux'
 
 function Login(props) {
 
@@ -41,6 +40,8 @@ function Login(props) {
             setErrors(data.errors)
             setShow(true) 
             window.scrollTo(0, 0)
+            errors.map((error) => alert.error(error))
+            
         }
     }
 
@@ -55,7 +56,7 @@ function Login(props) {
             handleData(data)
         } 
     }
-
+    // const alert = useAlert()
     const alert = () => {
         if (show) {
             return (
@@ -68,7 +69,7 @@ function Login(props) {
         return null
     }
 
-    
+    // 
 
     return (
         <div className="container">

@@ -8,16 +8,25 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from './reducers/reducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { positions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
 
 const store = createStore(
   reducer,
   composeWithDevTools()
 ) 
 
+const options = {
+  timeout: 5000,
+  position: positions.TOP_CENTER
+};
+
 ReactDOM.render(
   <Provider store = {store}>
     <Router>
-      <App />
+      <AlertProvider template={AlertTemplate} {...options}>
+        <App />
+      </AlertProvider>
     </Router>
   </Provider>
     ,

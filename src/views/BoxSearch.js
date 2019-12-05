@@ -1,14 +1,16 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import { Container, Image } from 'react-bootstrap';
+import { useAlert } from "react-alert";
 // import {image} from '../image.jpg'
 
 export default function BoxSearch(props){
 
     const [city, setCity] = useState('')
+    const alert = useAlert()
 
     const handleSubmit = () => {
-        if (city === ''){alert("Please, select a location.")}
+        if (city === ''){alert.show("Please, select a location.")}
         else{ 
             props.history.push('/restaurants')
         }
