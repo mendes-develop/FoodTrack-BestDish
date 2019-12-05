@@ -2,16 +2,19 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import { Container, Image } from 'react-bootstrap';
 import { useAlert } from "react-alert";
+import {useDispatch} from 'react-redux'
 // import {image} from '../image.jpg'
 
 export default function BoxSearch(props){
 
     const [city, setCity] = useState('')
     const alert = useAlert()
+    const dispatch = useDispatch()
 
     const handleSubmit = () => {
         if (city === ''){alert.show("Please, select a location.")}
         else{ 
+            // dispatch({type: "SET_CITY", payload: city})
             props.history.push('/restaurants')
         }
     }
@@ -22,11 +25,11 @@ export default function BoxSearch(props){
             <BoxSearchDiv className="search">
                 <select onChange={(e) => setCity(e.target.value)} className="searchTerm" name="location" id="">
                     <option value="" defaultValue>Select a location</option>
-                    <option value="manhattan">Manhattan</option>
-                    <option value="queens">Queens</option>
-                    <option value="brooklyn">Brooklyn</option>
-                    <option value="bronx">Bronx</option>
-                    <option value="statenisland">Staten Island</option>
+                    <option value="New York">Manhattan</option>
+                    <option value="Flushing">Flushing</option>
+                    <option value="Brooklyn">Brooklyn</option>
+                    <option value="Jersey City">Jersey City</option>
+                    <option value="Hoboken">Hoboken</option>
                 </select>
                 <button onClick={handleSubmit} type="submit" className="searchButton">
                     <i className="fa fa-search"></i>

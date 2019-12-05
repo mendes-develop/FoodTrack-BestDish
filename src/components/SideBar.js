@@ -1,29 +1,49 @@
-import React from 'react'
-import {useSelector} from 'react-redux'
+import React, {useState} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 import styled from 'styled-components'
+import {ListGroup, InputGroup, FormControl, Button} from 'react-bootstrap'
 
 
 
 export default function SideBar(){
 
   const restaurants = useSelector(state => state.restaurants)
+  const dispatch = useDispatch()
+  const [hovered, setHovered] = useState(null)
 
-    return (
-      <ListDiv>
-        <h2>List of restaurants</h2>
-        <ul>
+  const handleSelected = (restaurant) => {
+    dispatch({type: "SET_SELECTED_RESTAURANT", payload: restaurant})
+  }
+
+
+ 
+
+    return (  
+           <ListDiv>
+        <ListGroup 
+        as="ul"
+        style={{"overflowY": "auto"}}
+        >
           {restaurants.map(restaurant => {
-            return (<li key={restaurant.id}>{restaurant.name}</li>)
+            return (<ListGroup.Item 
+                  key={restaurant.id} 
+                  value={restaurant.id} 
+                  as="li" 
+                  active={hovered === restaurant.id}
+                  onMouseOver= {(e)=> setHovered(e.target.value)} 
+                  onClick={(e) => handleSelected(restaurant)}>
+              {restaurant.name}</ListGroup.Item>)
           })}
-        </ul>
-      </ListDiv>
+        </ListGroup>
+        </ListDiv>
+
     )
 }
 
 const ListDiv = styled.div`
   overflow: auto;
   float: bottom;
-  height: 10%;
+  height: 4.5%;
 
   .fixedNav {
     padding: 10px; /* Location of the box */

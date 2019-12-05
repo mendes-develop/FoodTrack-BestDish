@@ -83,8 +83,9 @@ export default function RestaurantShowPage(props) {
 
     return (
         <React.Fragment>
+        <button onClick={ ()=> props.history.goBack()}>Go back</button>
         {selectedRestaurant ? (
-            <Container>
+            <Container style={{"paddingBottom": "15px"}}>
             <ModalPage/>
                 <br/>
                 <Row className="justify-content-md-center" > 

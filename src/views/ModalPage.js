@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import { Button, Modal, Form, Image, Row, Col, Container } from 'react-bootstrap';
 import foodImage from '../food-image.svg'
 import {submitVote} from '../fetch/Fetch'
+import { useAlert } from "react-alert";
+
 
 export default function ModalPage({show, handleClose}) {
 
@@ -12,14 +14,16 @@ export default function ModalPage({show, handleClose}) {
   const modal = useSelector(state => state.modal)
   const selectedDish = useSelector(state => state.selectedDish)
 
+  const alert = useAlert()
+
   const handleData = (data) => {
     if (data.errors){
       debugger
       console.log(data.errors)
-      alert("Something happened with the data that was sent. Please, try it again")
+      alert.show("Something happened with the data that was sent. Please, try it again")
     } else {
       debugger
-      alert('thank you for submitting your vote')
+      alert.success('thank you for submitting your vote')
       dispatch({type: "SWITCH_MODAL"})
     }
   }
@@ -50,11 +54,21 @@ export default function ModalPage({show, handleClose}) {
             <Modal.Title>Rate This Dish</Modal.Title>
               <div key={`inline-checkbox`} className="mb-3">
               {[1,2,3,4,5].map(value => (
-                <Form.Check inline label={`${value}`} type='checkbox' value={value} key={value} checked={checkedRadio === `${value}`} onChange={(e) => setCheckedRadio(e.target.value)}/>
+                <Form.Check 
+                inline label={`${value}`} 
+                type='checkbox' 
+                value={value} 
+                key={value} checked={checkedRadio === `${value}`} 
+                onChange={(e) => setCheckedRadio(e.target.value)}/>
                 ))}
               </div>
               <Form.Label>Leave a Comment:</Form.Label>
-              <Form.Control value={comment} onChange={(e)=> setComment(e.target.value)} as="textarea" rows="3" placeholder="What do you think about this dish?"/>
+              <Form.Control 
+              value={comment} 
+              onChange={(e)=> setComment(e.target.value)} 
+              as="textarea" 
+              rows="3" 
+              placeholder="What do you think about this dish?"/>
             </Form>
           </Modal.Body>
           <Modal.Footer>

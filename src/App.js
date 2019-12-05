@@ -18,6 +18,7 @@ import RestaurantShowPage from './views/RestaurantShowPage'
 function App() {
 
   const currentUser = useSelector(state => state.currentUser)
+  // const city = useSelector(state => state.city)
   const dispatch = useDispatch()
 
   useEffect(() => {

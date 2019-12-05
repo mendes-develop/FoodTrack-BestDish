@@ -62,7 +62,7 @@ function Login(props) {
             return (
                 <Alert variant="danger" onClose={() => setShow(false)} dismissible>
                 <Alert.Heading>You got an error!</Alert.Heading>
-                    {errors.map((error) => <p>{error}</p>)}
+                    {errors.map((error, index) => <p key={index}>{error}</p>)}
                 </Alert>
             )
         }

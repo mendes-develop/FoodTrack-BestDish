@@ -38,7 +38,8 @@ let initialState = {
     selectedRestaurant:null,
     selectedDish: null,
     favoriteRestaurants: [],
-    modal: false
+    modal: false,
+    city: ''
 
 }
 
@@ -87,6 +88,11 @@ export default function reducer(state = initialState, action){
             return {
                 ...state,
                 favoriteRestaurants: action.payload
+            }
+        case "SET_CITY" :
+            return {
+                ...state,
+                city: action.payload
             }
         default :return state
     }

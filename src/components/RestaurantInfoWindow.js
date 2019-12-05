@@ -15,9 +15,10 @@ export function RestaurantInfoWindow(props) {
 
 
   const handleData = (data) =>{
-    if (data.ok){
-      dispatch({type: "ADD_TO_FAVORITES", payload: selectedRestaurant})
+    if (data.id){
+      dispatch({type: "ADD_TO_FAVORITES", payload: data})
       alert.success(`${name} was added to your favorites`)
+      dispatch({type: "SET_SELECTED_RESTAURANT", payload: null})
     }else if (data.errors){
       alert.show(`${data.errors[0]}`)
     }
