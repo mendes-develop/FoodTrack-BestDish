@@ -51,7 +51,7 @@ export default function MapDiv(){
         </Col>
         <Col lg={9} md={9} xl={9}>
           <WrappedMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=`}
             loadingElement={<div style={{ height: '100%'}} />}
             containerElement={<div style={{ height: '10%'}} />}
             mapElement={<div style={{height: '44%'}} />}
@@ -62,6 +62,7 @@ export default function MapDiv(){
     </Container>
   )
 
+    // ${process.env.REACT_APP_GOOGLE_KEY}
     // return (
     //     <MapContainer className='map-container'>
     //       <SideBar/>
