@@ -35,7 +35,7 @@ export default function BoxSearch(props){
                     <i className="fa fa-search"></i>
                 </button>
             </BoxSearchDiv>
-            <Image src="../image.jpg" style={{"position": "fixed","display": "flex","filter" : "brightness(50%)"}} fluid />
+            <Image src="../image.jpg" style={{"position": "fixed","display": "flex","filter" : "brightness(50%)", "height" : "100%"}} fluid />
         </Container>
             
         
