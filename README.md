@@ -1,5 +1,5 @@
 # Best Dishes
-## How dos it work
+
 Best Dishes is a web application that allows users to give ratings and comments to specific dishes from restaurants in the New York City area. Users are able to save a list of favorite restaurants on their profile, rate and comment dishes from restaurants that they’ve been to.
 
    ![alt gif](https://github.com/mendes-develop/FoodTrack-BestDish-frontend/blob/master/public/out.gif)
