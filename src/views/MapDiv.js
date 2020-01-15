@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getRestaurants} from '../fetch/Fetch'
 import { Container, Row, Col, InputGroup, FormGroup, Button, FormControl } from 'react-bootstrap';
 
-const key = process.env.REACT_APP_GOOGLE_KEY ? process.env.REACT_APP_GOOGLE_KEY : ''
+// const key = REACT_APP_GOOGLE_KEY ? REACT_APP_GOOGLE_KEY : ''
 
 export default function MapDiv(){
 
