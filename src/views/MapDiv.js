@@ -15,6 +15,7 @@ export default function MapDiv(){
   const restaurants = useSelector(state => state.restaurants)
 
   console.log(key)
+  console.log("from MapDiv")
 
   // const changeTextField = (e) => {
   //   setText(e.target.value)
