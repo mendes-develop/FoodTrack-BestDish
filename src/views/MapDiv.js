@@ -14,6 +14,8 @@ export default function MapDiv(){
   const [text, setText] = useState("")
   const restaurants = useSelector(state => state.restaurants)
 
+  console.log(key)
+
   // const changeTextField = (e) => {
   //   setText(e.target.value)
   //   let filteredRestaurants = restaurants.filter(restaurant => restaurant.name.includes(text))
