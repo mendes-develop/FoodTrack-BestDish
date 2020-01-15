@@ -1,6 +1,6 @@
 
-// const url = 'https://bestdishbackend.herokuapp.com/'
-const url = 'http://localhost:3000/'
+const url = 'https://bestdishbackend.herokuapp.com/'
+// const url = 'http://localhost:3000/'
 
 export const loginUser = (username, password) => {
     return (
