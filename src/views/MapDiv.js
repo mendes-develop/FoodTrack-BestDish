@@ -13,9 +13,6 @@ export default function MapDiv(){
   const dispatch = useDispatch()
   const [text, setText] = useState("")
   const restaurants = useSelector(state => state.restaurants)
-
-  console.log("line 17", process.env.REACT_APP_API_KEY)
-  console.log("line 18", process.env)
   
 
   // const changeTextField = (e) => {
