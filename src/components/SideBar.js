@@ -22,7 +22,7 @@ export default function SideBar(){
            <ListDiv>
         <ListGroup 
         as="ul"
-        style={{"overflowY": "auto"}}
+        style={{"overflowY": "auto","height" : "100%"}}
         >
           {restaurants.map(restaurant => {
             return (<ListGroup.Item 
@@ -43,15 +43,5 @@ export default function SideBar(){
 const ListDiv = styled.div`
   overflow: auto;
   float: bottom;
-  height: 4.5%;
-
-  .fixedNav {
-    padding: 10px; /* Location of the box */
-    left: 2%;
-    top: 70%;
-    /* width: 20%; Full width */
-    /* height: 50%; Full height */
-    /* Enable scroll if needed */ 
-    
-  }
+  height: 100%;
 `

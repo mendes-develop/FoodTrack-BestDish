@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getRestaurants} from '../fetch/Fetch'
 import { Container, Row, Col, InputGroup, FormGroup, Button, FormControl } from 'react-bootstrap';
 
-
+const key = process.env.REACT_APP_GOOGLE_KEY ? process.env.REACT_APP_GOOGLE_KEY : ''
 
 export default function MapDiv(){
 
@@ -43,18 +43,17 @@ export default function MapDiv(){
   }, [dispatch])
 
   return (
-    <Container fluid={true} style={{"paddingRight": "0px", "paddingLeft": "0px", "height" : "90vh", "overflow" : "hidden"}}>
-      <Row style={{"paddingLeft": "10px"}}>
-        <Col lg={3} md={3} xl={3} style={{"paddingRight": "0px", "marginTop" : "10px"}}>
-        
+    <Container fluid={true} style={{"paddingRight": "0px", "paddingLeft": "0px", "height" : "91vh", "overflow" : "hidden"}}>
+      <Row style={{"paddingLeft": "10px", "height" : "100%"}}>
+        <Col lg={3} md={3} xl={3} style={{"paddingBottom" : "20px", "paddingRight": "0px", "marginTop" : "10px", height: '100%'}}>
           <SideBar/>
         </Col>
-        <Col lg={9} md={9} xl={9}>
+        <Col lg={9} md={9} xl={9} style={{ height: '100%'}}>
           <WrappedMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=`}
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${key}`}
             loadingElement={<div style={{ height: '100%'}} />}
-            containerElement={<div style={{ height: '10%'}} />}
-            mapElement={<div style={{height: '44%'}} />}
+            containerElement={<div style={{ height: '100%'}} />}
+            mapElement={<div style={{height: '100%'}} />}
             
           />
         </Col>
