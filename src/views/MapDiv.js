@@ -14,7 +14,8 @@ export default function MapDiv(){
   const [text, setText] = useState("")
   const restaurants = useSelector(state => state.restaurants)
 
-  console.log(process.env.API_KEY)
+  console.log(process.env.REACT_APP_API_KEY)
+  console.log(process.env)
   
 
   // const changeTextField = (e) => {
@@ -53,7 +54,7 @@ export default function MapDiv(){
         </Col>
         <Col lg={9} md={9} xl={9} style={{ height: '100%'}}>
           <WrappedMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.API_KEY}`}
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_API_KEY}`}
             loadingElement={<div style={{ height: '100%'}} />}
             containerElement={<div style={{ height: '100%'}} />}
             mapElement={<div style={{height: '100%'}} />}
