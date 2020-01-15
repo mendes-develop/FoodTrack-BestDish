@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getRestaurants} from '../fetch/Fetch'
 import { Container, Row, Col, InputGroup, FormGroup, Button, FormControl } from 'react-bootstrap';
 
-const key = `${API_KEY}`
+const key = `${process.env.API_KEY}`
 
 export default function MapDiv(){
 
