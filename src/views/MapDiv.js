@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getRestaurants} from '../fetch/Fetch'
 import { Container, Row, Col, InputGroup, FormGroup, Button, FormControl } from 'react-bootstrap';
 
-const key = `${process.env.API_KEY}`
+// const key = `${process.env.API_KEY}`
 
 export default function MapDiv(){
 
@@ -14,8 +14,8 @@ export default function MapDiv(){
   const [text, setText] = useState("")
   const restaurants = useSelector(state => state.restaurants)
 
-  console.log(key)
-  console.log("from MapDiv")
+  console.log(process.env.API_KEY)
+  
 
   // const changeTextField = (e) => {
   //   setText(e.target.value)
@@ -53,7 +53,7 @@ export default function MapDiv(){
         </Col>
         <Col lg={9} md={9} xl={9} style={{ height: '100%'}}>
           <WrappedMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${key}`}
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.API_KEY}`}
             loadingElement={<div style={{ height: '100%'}} />}
             containerElement={<div style={{ height: '100%'}} />}
             mapElement={<div style={{height: '100%'}} />}
